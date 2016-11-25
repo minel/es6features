@@ -6,46 +6,46 @@ ECMAScript 6, aynı zamanda ECMAScript 2015 olarak da bilinir, ECMAScript standa
 ECMAScript 6 dilinin tam tanımları için [ES6 standard](http://www.ecma-international.org/ecma-262/6.0/)'ına gözatın
 
 ES6 aşağıdaki yeni özellikleri içerir:
-- [arrows](#arrows)
-- [classes](#classes)
-- [enhanced object literals](#enhanced-object-literals)
-- [template strings](#template-strings)
-- [destructuring](#destructuring)
-- [default + rest + spread](#default--rest--spread)
+- [Arrow Fonksiyonlar](#arrow-fonksiyonlar)
+- [Sınıflar](#siniflar)
+- [Geliştirilmiş Object Literalları](#gelistirilmis-object-literallari)
+- [Template Stringleri](#template-stringleri)
+- [Destructuring](#destructuring)
+- [Default + REST + Spread](#default--rest--spread)
 - [let + const](#let--const)
-- [iterators + for..of](#iterators--forof)
-- [generators](#generators)
-- [unicode](#unicode)
-- [modules](#modules)
-- [module loaders](#module-loaders)
-- [map + set + weakmap + weakset](#map--set--weakmap--weakset)
-- [proxies](#proxies)
-- [symbols](#symbols)
-- [subclassable built-ins](#subclassable-built-ins)
-- [promises](#promises)
-- [math + number + string + array + object APIs](#math--number--string--array--object-apis)
-- [binary and octal literals](#binary-and-octal-literals)
-- [reflect api](#reflect-api)
-- [tail calls](#tail-calls)
+- [Iteratorlar + for..of](#iteratorlar--forof)
+- [Generatorlar](#generatorlar)
+- [Unicode](#unicode)
+- [Modüller](#moduller)
+- [Modül Yükleyiciler](#modul-yukleyicileri)
+- [Map + Set + Weakmap + Weakset](#map--set--weakmap--weakset)
+- [Proxyler](#proxyler)
+- [Symbollar](#symbollar)
+- [Alt Sınıflandırılabilir Yerleşik Elemanlar](#alt-siniflandirilabilir-yerleşik-elemanlar)
+- [Promiseler](#promiseler)
+- [Math + Number + String + Array + Object APIları](#math--number--string--array--object-apilari)
+- [İkilik and Sekizlik Literallar](#binary-and-octal-literallar)
+- [Reflect API](#reflect-api)
+- [Kuyruk Çağrıları](#kuyruk-cagrilari)
 
 ## ECMAScript 6 Özellikleri
 
-### Arrows
-Arrows are a function shorthand using the `=>` syntax.  They are syntactically similar to the related feature in C#, Java 8 and CoffeeScript.  They support both statement block bodies as well as expression bodies which return the value of the expression.  Unlike functions, arrows share the same lexical `this` as their surrounding code.
+### Arrow Fonksiyonlar
+Arrow fonksiyonlar, bir fonksiyonu `=>` notasyonu ile göstermenin kısa yoludurlar. Sözdizimsel olarak C#, Java 8 ve CoffeeScript ile benzerlik göstermektedirler. Bir expressionın değerini döndüren expression gövdeleri kadar statement block gövdeleri de desteklerler. Fonksiyonlardan farklı olarak arrow fonksiyonlar, `this` belirtecini çevreledikleri kod bloğu içerisinde paylaşırlar.
 
 ```JavaScript
-// Expression bodies
+// Expression gövdesi
 var odds = evens.map(v => v + 1);
 var nums = evens.map((v, i) => v + i);
 var pairs = evens.map(v => ({even: v, odd: v + 1}));
 
-// Statement bodies
+// Statement gövdesi
 nums.forEach(v => {
   if (v % 5 === 0)
     fives.push(v);
 });
 
-// Lexical this
+// Sözlü olarak
 var bob = {
   _name: "Bob",
   _friends: [],
@@ -58,8 +58,8 @@ var bob = {
 
 Daha fazla bilgi: [MDN Arrow Functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
-### Classes
-ES6 classes are a simple sugar over the prototype-based OO pattern.  Having a single convenient declarative form makes class patterns easier to use, and encourages interoperability.  Classes support prototype-based inheritance, super calls, instance and static methods and constructors.
+### Sınıflar
+ES6 sınıfları, prototype bazlı nesne yönelimli tasarım deseninin basit bir biçimde yumuşatılmış halidir. Tek bir uygun tanımlama biçimine sahip olmak sınıf desenlerini daha kolay kullanılır hale getirir ve birlikte işlerliği teşvik eder. Sınıflar; prototype bazlı kalıtımı, `super` çağrılarını, `instance, static, constructor` methodlarını destekler.
 
 ```JavaScript
 class SkinnedMesh extends THREE.Mesh {
@@ -89,7 +89,7 @@ class SkinnedMesh extends THREE.Mesh {
 
 Daha fazla bilgi: [MDN Classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
 
-### Enhanced Object Literals
+### Geliştirilmiş Object Literalları
 Object literals are extended to support setting the prototype at construction, shorthand for `foo: foo` assignments, defining methods, making super calls, and computing property names with expressions.  Together, these also bring object literals and class declarations closer together, and let object-based design benefit from some of the same conveniences.
 
 ```JavaScript
@@ -110,7 +110,7 @@ var obj = {
 
 Daha fazla bilgi: [MDN Grammar and types: Object literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Object_literals)
 
-### Template Strings
+### Template Stringleri
 Template strings provide syntactic sugar for constructing strings.  This is similar to string interpolation features in Perl, Python and more.  Optionally, a tag can be added to allow the string construction to be customized, avoiding injection attacks or constructing higher level data structures from string contents.
 
 ```JavaScript
@@ -167,7 +167,7 @@ a === 1;
 
 Daha fazla bilgi: [MDN Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
-### Default + Rest + Spread
+### Default + REST + Spread
 Callee-evaluated default parameter values.  Turn an array into consecutive arguments in a function call.  Bind trailing parameters to an array.  Rest replaces the need for `arguments` and addresses common cases more directly.
 
 ```JavaScript
@@ -216,7 +216,7 @@ function f() {
 
 More MDN info: [let statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), [const statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
 
-### Iterators + For..Of
+### Iteratorlar + For..Of
 Iterator objects enable custom iteration like CLR IEnumerable or Java Iterable.  Generalize `for..in` to custom iterator-based iteration with `for..of`.  Don’t require realizing an array, enabling lazy design patterns like LINQ.
 
 ```JavaScript
@@ -256,7 +256,7 @@ interface Iterable {
 
 Daha fazla bilgi: [MDN for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
 
-### Generators
+### Generatorlar
 Generators simplify iterator-authoring using `function*` and `yield`.  A function declared as function* returns a Generator instance.  Generators are subtypes of iterators which include additional  `next` and `throw`.  These enable values to flow back into the generator, so `yield` is an expression form which returns a value (or throws).
 
 Note: Can also be used to enable ‘await’-like async programming, see also ES7 `await` proposal.
@@ -317,7 +317,7 @@ for(var c of "𠮷") {
 
 Daha fazla bilgi: [MDN RegExp.prototype.unicode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicode)
 
-### Modules
+### Modüller
 Language-level support for modules for component definition.  Codifies patterns from popular JavaScript module loaders (AMD, CommonJS). Runtime behaviour defined by a host-defined default loader.  Implicitly async model – no code executes until requested modules are available and processed.
 
 ```JavaScript
@@ -356,7 +356,7 @@ alert("2π = " + ln(e)*pi*2);
 
 More MDN info: [import statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import), [export statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
 
-### Module Loaders
+### Modül Yükleyiciler
 Module loaders support:
 - Dynamic loading
 - State isolation
@@ -412,7 +412,7 @@ ws.add({ data: 42 });
 
 More MDN info: [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set), [WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap), [WeakSet](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet)
 
-### Proxies
+### Proxyler
 Proxies enable creation of objects with the full range of behaviors available to host objects.  Can be used for interception, object virtualization, logging/profiling, etc.
 
 ```JavaScript
@@ -465,7 +465,7 @@ var handler =
 
 Daha fazla bilgi: [MDN Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 
-### Symbols
+### Symbollar
 Symbols enable access control for object state.  Symbols allow properties to be keyed by either `string` (as in ES5) or `symbol`.  Symbols are a new primitive type. Optional `description` parameter used in debugging - but is not part of identity.  Symbols are unique (like gensym), but not private since they are exposed via reflection features like `Object.getOwnPropertySymbols`.
 
 
@@ -494,7 +494,7 @@ c["key"] === undefined
 
 Daha fazla bilgi: [MDN Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 
-### Subclassable Built-ins
+### Alt Sınıflandırılabilir Yerleşik Elemanlar
 In ES6, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
 
 Object construction for a function named `Ctor` now uses two-phases (both virtually dispatched):
@@ -526,7 +526,7 @@ arr[1] = 12;
 arr.length == 2
 ```
 
-### Math + Number + String + Array + Object APIs
+### Math + Number + String + Array + Object APIları
 Many new library additions, including core Math libraries, Array conversion helpers, String helpers, and Object.assign for copying.
 
 ```JavaScript
@@ -556,7 +556,7 @@ Object.assign(Point, { origin: new Point(0,0) })
 
 More MDN info: [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math), [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from), [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of), [Array.prototype.copyWithin](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin), [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
-### Binary and Octal Literals
+### İkilik ve Sekizlik Literallar
 Two new numeric literal forms are added for binary (`b`) and octal (`o`).
 
 ```JavaScript
@@ -564,7 +564,7 @@ Two new numeric literal forms are added for binary (`b`) and octal (`o`).
 0o767 === 503 // true
 ```
 
-### Promises
+### Promiseler
 Promises are a library for asynchronous programming.  Promises are a first class representation of a value that may be made available in the future.  Promises are used in many existing JavaScript libraries.
 
 ```JavaScript
@@ -594,7 +594,7 @@ Full reflection API exposing the runtime-level meta-operations on objects.  This
 
 Daha fazla bilgi: [MDN Reflect](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
 
-### Tail Calls
+### Kuyruk Çağrıları
 Calls in tail-position are guaranteed to not grow the stack unboundedly.  Makes recursive algorithms safe in the face of unbounded inputs.
 
 ```JavaScript
